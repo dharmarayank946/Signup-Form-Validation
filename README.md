@@ -4,6 +4,9 @@ A clean, modern, accessible, and responsive **Signup Form with Validation** web 
 
 Designed with an elegant light theme featuring soft pastel green accents, this project provides instant client-side validation, live password strength analysis, real-time complexity checklists, inline error messages, and a show/hide password toggle. It is 100% dependency-free and ready for deployment to GitHub Pages.
 
+> [!NOTE]
+> **Demo Purpose:** This project is strictly a client-side frontend validation demo. It does **not** connect to a backend server, database, or API, and does **not** create real user accounts or store sensitive data. No build tools, Node.js, or npm dependencies are required to run this static website.
+
 ---
 
 ## ✨ Features

@@ -1,0 +1,674 @@
+/* ==========================================================================
+   Signup Form with Validation - Clean Light Pastel Green & White Theme
+   ========================================================================== */
+
+:root {
+  /* Core Light Palette */
+  --bg-page: #F4F8F5;
+  --bg-card: #FFFFFF;
+  --bg-input: #FFFFFF;
+  --bg-input-focus: #FAFCFA;
+
+  /* Pastel Green Accents */
+  --green-primary: #2D6A4F;
+  --green-hover: #1E4D38;
+  --green-pastel: #EAF5EE;
+  --green-soft: #D8F3DC;
+  --green-subtle: #F0F7F2;
+
+  /* Borders & Dividers */
+  --border-light: #D5E5DA;
+  --border-focus: #2D6A4F;
+  --border-radius-card: 16px;
+  --border-radius-input: 10px;
+  --border-radius-btn: 10px;
+
+  /* Typography Colors */
+  --text-primary: #1C2B21;
+  --text-secondary: #506658;
+  --text-muted: #748A7B;
+  --text-placeholder: #9EAEA3;
+
+  /* Validation & Status Colors */
+  --error-color: #D9383A;
+  --error-bg: #FDF3F3;
+  --error-border: #F7B8B8;
+  --success-color: #2D6A4F;
+  --success-bg: #EAF5EE;
+
+  /* Strength Meter Colors */
+  --strength-weak: #E65100;
+  --strength-medium: #D97706;
+  --strength-strong: #2D6A4F;
+
+  /* Shadows */
+  --shadow-card: 0 10px 30px -4px rgba(45, 106, 79, 0.08), 
+                 0 4px 12px -2px rgba(45, 106, 79, 0.04);
+  --shadow-focus: 0 0 0 3px rgba(45, 106, 79, 0.18);
+  --shadow-error-focus: 0 0 0 3px rgba(217, 56, 58, 0.15);
+
+  /* Fonts */
+  --font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --transition-fast: 0.2s ease;
+}
+
+/* Base Reset & Universal Box Sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+}
+
+/* ==========================================================================
+   Page Layout & Wrapper
+   ========================================================================== */
+.signup-wrapper {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  justify-content: center;
+}
+
+.signup-card {
+  width: 100%;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--border-radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 36px 32px;
+  position: relative;
+  transition: box-shadow var(--transition-fast);
+}
+
+/* ==========================================================================
+   Card Header
+   ========================================================================== */
+.card-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.brand-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  background-color: var(--green-pastel);
+  color: var(--green-primary);
+  border-radius: 14px;
+  margin-bottom: 14px;
+}
+
+.badge-icon {
+  width: 26px;
+  height: 26px;
+}
+
+.card-title {
+  font-size: 1.625rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+
+.card-subtitle {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   Form Groups & Labels
+   ========================================================================== */
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.form-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 7px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.form-label .required {
+  color: var(--error-color);
+  font-size: 0.875rem;
+}
+
+/* ==========================================================================
+   Input Controls & Status Indicators
+   ========================================================================== */
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.form-input {
+  width: 100%;
+  height: 48px;
+  padding: 0 44px 0 14px;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  color: var(--text-primary);
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-light);
+  border-radius: var(--border-radius-input);
+  outline: none;
+  transition: border-color var(--transition-fast), 
+              box-shadow var(--transition-fast), 
+              background-color var(--transition-fast);
+}
+
+.form-input::placeholder {
+  color: var(--text-placeholder);
+}
+
+/* Input Focus State */
+.form-input:focus {
+  border-color: var(--border-focus);
+  box-shadow: var(--shadow-focus);
+  background-color: var(--bg-input-focus);
+}
+
+/* Input Valid State */
+.form-input.is-valid {
+  border-color: var(--green-primary);
+  background-color: var(--bg-input-focus);
+}
+
+/* Input Error State */
+.form-input.has-error {
+  border-color: var(--error-color);
+  background-color: var(--error-bg);
+}
+
+.form-input.has-error:focus {
+  border-color: var(--error-color);
+  box-shadow: var(--shadow-error-focus);
+}
+
+/* Right Status Icon for Name & Email */
+.status-icon {
+  position: absolute;
+  right: 14px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.form-input.is-valid + .status-icon {
+  opacity: 1;
+  transform: scale(1);
+  color: var(--green-primary);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232D6A4F' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.form-input.has-error + .status-icon {
+  opacity: 1;
+  transform: scale(1);
+  color: var(--error-color);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D9383A' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Cline x1='12' y1='8' x2='12' y2='12'%3E%3C/line%3E%3Cline x1='12' y1='16' x2='12.01' y2='16'%3E%3C/line%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* ==========================================================================
+   Password Input with Show / Hide Toggle
+   ========================================================================== */
+.password-wrapper .form-input {
+  padding-right: 48px;
+}
+
+.toggle-password-btn {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.toggle-password-btn:hover {
+  color: var(--text-primary);
+  background-color: var(--green-subtle);
+}
+
+.toggle-password-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.eye-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.eye-open {
+  display: block;
+}
+
+.eye-closed {
+  display: none;
+}
+
+.toggle-password-btn.is-visible .eye-open {
+  display: none;
+}
+
+.toggle-password-btn.is-visible .eye-closed {
+  display: block;
+}
+
+/* ==========================================================================
+   Inline Error Message Box
+   ========================================================================== */
+.error-message {
+  font-size: 0.8125rem;
+  color: var(--error-color);
+  font-weight: 500;
+  margin-top: 6px;
+  display: none;
+  line-height: 1.4;
+}
+
+.error-message.visible {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.error-message.visible::before {
+  content: "•";
+  font-size: 1.1rem;
+  line-height: 0.8;
+}
+
+/* ==========================================================================
+   Live Password Strength Meter
+   ========================================================================== */
+.strength-meter-container {
+  margin-top: 10px;
+  padding: 10px 12px;
+  background-color: var(--green-subtle);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.strength-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.strength-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.strength-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background-color: #E2ECE5;
+  color: var(--text-muted);
+  transition: all var(--transition-fast);
+}
+
+.strength-badge.weak {
+  background-color: #FDE8E8;
+  color: var(--strength-weak);
+}
+
+.strength-badge.medium {
+  background-color: #FEF3C7;
+  color: var(--strength-medium);
+}
+
+.strength-badge.strong {
+  background-color: var(--green-soft);
+  color: var(--strength-strong);
+}
+
+.strength-track {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  width: 100%;
+}
+
+.strength-segment {
+  height: 5px;
+  background-color: #DDE8DF;
+  border-radius: 3px;
+  transition: background-color var(--transition-fast);
+}
+
+.strength-segment.active-weak {
+  background-color: var(--strength-weak);
+}
+
+.strength-segment.active-medium {
+  background-color: var(--strength-medium);
+}
+
+.strength-segment.active-strong {
+  background-color: var(--strength-strong);
+}
+
+/* ==========================================================================
+   Password Requirements Checklist
+   ========================================================================== */
+.requirements-list {
+  list-style: none;
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+}
+
+.req-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+}
+
+.req-indicator {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border-light);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+}
+
+.req-indicator::after {
+  content: "";
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: transparent;
+}
+
+.req-item.met {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.req-item.met .req-indicator {
+  background-color: var(--green-primary);
+  border-color: var(--green-primary);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+  background-size: 10px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* ==========================================================================
+   Submit Button
+   ========================================================================== */
+.submit-btn {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 24px;
+  margin-top: 6px;
+  background-color: var(--green-primary);
+  color: #FFFFFF;
+  border: none;
+  border-radius: var(--border-radius-btn);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: background-color var(--transition-fast), 
+              transform var(--transition-fast), 
+              box-shadow var(--transition-fast);
+}
+
+.submit-btn:hover {
+  background-color: var(--green-hover);
+  box-shadow: 0 4px 12px rgba(45, 106, 79, 0.25);
+}
+
+.submit-btn:active {
+  transform: translateY(1px);
+}
+
+.submit-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.btn-arrow {
+  width: 18px;
+  height: 18px;
+  transition: transform var(--transition-fast);
+}
+
+.submit-btn:hover .btn-arrow {
+  transform: translateX(3px);
+}
+
+/* ==========================================================================
+   Success State Card
+   ========================================================================== */
+.success-card {
+  text-align: center;
+  padding: 12px 0 6px;
+}
+
+.success-card.hidden {
+  display: none;
+}
+
+.success-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  background-color: var(--green-pastel);
+  color: var(--green-primary);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  border: 2px solid var(--green-soft);
+}
+
+.success-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.success-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.success-desc {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.success-desc strong {
+  color: var(--green-primary);
+}
+
+.user-summary {
+  background-color: var(--green-subtle);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+}
+
+.summary-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  border-bottom: 1px dashed #D3E5D8;
+  padding-bottom: 8px;
+}
+
+.summary-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.summary-label {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.summary-val {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.badge-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--green-primary);
+  background-color: var(--green-soft);
+  padding: 3px 10px;
+  border-radius: 12px;
+}
+
+.badge-dot {
+  width: 7px;
+  height: 7px;
+  background-color: var(--green-primary);
+  border-radius: 50%;
+}
+
+.secondary-btn {
+  width: 100%;
+  min-height: 46px;
+  background-color: var(--green-pastel);
+  color: var(--green-primary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--border-radius-btn);
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.secondary-btn:hover {
+  background-color: var(--green-soft);
+  border-color: var(--green-primary);
+}
+
+.secondary-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+/* ==========================================================================
+   Responsive Media Queries
+   ========================================================================== */
+@media (max-width: 480px) {
+  body {
+    padding: 16px 12px;
+  }
+
+  .signup-card {
+    padding: 28px 20px;
+  }
+
+  .card-title {
+    font-size: 1.4rem;
+  }
+
+  .card-subtitle {
+    font-size: 0.875rem;
+  }
+
+  .form-input {
+    height: 46px;
+    font-size: 0.9rem;
+  }
+
+  .submit-btn {
+    min-height: 46px;
+    font-size: 0.95rem;
+  }
+}

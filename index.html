@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up | Create Your Account</title>
+  <meta name="description" content="Clean, responsive signup form with instant inline validation and live password strength indicator.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="signup-wrapper">
+    <div class="signup-card" id="signupCard">
+      <!-- Card Header -->
+      <header class="card-header">
+        <div class="brand-badge" aria-hidden="true">
+          <svg class="badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <line x1="19" y1="8" x2="19" y2="14"></line>
+            <line x1="22" y1="11" x2="16" y2="11"></line>
+          </svg>
+        </div>
+        <h1 class="card-title">Create Account</h1>
+        <p class="card-subtitle">Join us today. Please fill in your details below to get started.</p>
+      </header>
+
+      <!-- Form Container -->
+      <form id="signupForm" class="signup-form" novalidate>
+        <!-- Full Name Group -->
+        <div class="form-group" id="groupName">
+          <label for="fullName" class="form-label">
+            Full Name <span class="required" aria-hidden="true">*</span>
+          </label>
+          <div class="input-wrapper">
+            <input 
+              type="text" 
+              id="fullName" 
+              name="fullName" 
+              class="form-input" 
+              placeholder="e.g. Jane Doe" 
+              autocomplete="name" 
+              required 
+              aria-required="true"
+              aria-describedby="nameError"
+            >
+            <span class="status-icon" aria-hidden="true"></span>
+          </div>
+          <p class="error-message" id="nameError" role="alert" aria-live="polite"></p>
+        </div>
+
+        <!-- Email Address Group -->
+        <div class="form-group" id="groupEmail">
+          <label for="email" class="form-label">
+            Email Address <span class="required" aria-hidden="true">*</span>
+          </label>
+          <div class="input-wrapper">
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              class="form-input" 
+              placeholder="e.g. jane.doe@example.com" 
+              autocomplete="email" 
+              required 
+              aria-required="true"
+              aria-describedby="emailError"
+            >
+            <span class="status-icon" aria-hidden="true"></span>
+          </div>
+          <p class="error-message" id="emailError" role="alert" aria-live="polite"></p>
+        </div>
+
+        <!-- Password Group -->
+        <div class="form-group" id="groupPassword">
+          <label for="password" class="form-label">
+            Password <span class="required" aria-hidden="true">*</span>
+          </label>
+          <div class="input-wrapper password-wrapper">
+            <input 
+              type="password" 
+              id="password" 
+              name="password" 
+              class="form-input" 
+              placeholder="Create a strong password" 
+              autocomplete="new-password" 
+              required 
+              aria-required="true"
+              aria-describedby="passwordError passwordRequirements"
+            >
+            <button 
+              type="button" 
+              id="togglePasswordBtn" 
+              class="toggle-password-btn" 
+              aria-label="Show password" 
+              title="Show password"
+            >
+              <!-- Eye open icon (visible when password is hidden) -->
+              <svg class="eye-icon eye-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              <!-- Eye closed icon (visible when password is shown) -->
+              <svg class="eye-icon eye-closed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                <line x1="1" y1="1" x2="23" y2="23"></line>
+              </svg>
+            </button>
+          </div>
+          <p class="error-message" id="passwordError" role="alert" aria-live="polite"></p>
+
+          <!-- Live Password Strength Meter -->
+          <div class="strength-meter-container" id="strengthContainer" aria-live="polite">
+            <div class="strength-meta">
+              <span class="strength-label">Password Strength:</span>
+              <span class="strength-badge" id="strengthBadge">None</span>
+            </div>
+            <div class="strength-track" aria-hidden="true">
+              <div class="strength-segment" id="seg1"></div>
+              <div class="strength-segment" id="seg2"></div>
+              <div class="strength-segment" id="seg3"></div>
+            </div>
+          </div>
+
+          <!-- Password Complexity Requirements Checklist -->
+          <ul class="requirements-list" id="passwordRequirements" aria-label="Password complexity criteria">
+            <li class="req-item" id="reqLength">
+              <span class="req-indicator" aria-hidden="true"></span>
+              <span>At least 8 characters</span>
+            </li>
+            <li class="req-item" id="reqUppercase">
+              <span class="req-indicator" aria-hidden="true"></span>
+              <span>One uppercase letter (A-Z)</span>
+            </li>
+            <li class="req-item" id="reqLowercase">
+              <span class="req-indicator" aria-hidden="true"></span>
+              <span>One lowercase letter (a-z)</span>
+            </li>
+            <li class="req-item" id="reqNumber">
+              <span class="req-indicator" aria-hidden="true"></span>
+              <span>One number (0-9)</span>
+            </li>
+            <li class="req-item" id="reqSpecial">
+              <span class="req-indicator" aria-hidden="true"></span>
+              <span>One special character (!@#$%^&amp;*)</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" id="submitBtn" class="submit-btn">
+          <span>Create Account</span>
+          <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+      </form>
+
+      <!-- Inline Success Screen (Displayed upon valid submission) -->
+      <section class="success-card hidden" id="successCard" role="status" aria-live="polite" aria-labelledby="successTitle">
+        <div class="success-icon-wrapper" aria-hidden="true">
+          <svg class="success-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+        </div>
+        <h2 class="success-title" id="successTitle">Account Created Successfully!</h2>
+        <p class="success-desc">
+          Welcome aboard, <strong id="successDisplayName">User</strong>! All your credentials have passed verification.
+        </p>
+
+        <div class="user-summary">
+          <div class="summary-row">
+            <span class="summary-label">Name</span>
+            <span class="summary-val" id="summaryName">—</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">Email</span>
+            <span class="summary-val" id="summaryEmail">—</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">Account Status</span>
+            <span class="badge-status">
+              <span class="badge-dot" aria-hidden="true"></span>
+              Verified &amp; Ready
+            </span>
+          </div>
+        </div>
+
+        <button type="button" id="resetFormBtn" class="secondary-btn">
+          <span>Sign Up Another Account</span>
+        </button>
+      </section>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
